@@ -1,7 +1,7 @@
 execute pathogen#infect()
 
+" use two spaces for indents, and make them actual spaces
 set backspace=2
-syntax on
 set shiftwidth=2
 set tabstop=2
 set autoindent
@@ -9,6 +9,7 @@ set expandtab
 
 set number
 colorscheme desert
+syntax on
 set nobackup
 filetype indent on
 
