@@ -1,7 +1,7 @@
 Installation:
 
 ```bash
-git clone https://github.com/rdeese/dotvim.git &&
+git clone https://github.com/rdeese/dotvim.git ~/.vim &&
 ln -s ~/.vim/vimrc ~/.vimrc &&
 cd ~/.vim &&
 git submodule update --init
