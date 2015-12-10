@@ -1,20 +1,13 @@
 Installation:
 
-```
-git clone git://github.com/nelstrom/dotvim.git ~/.vim
-```
-
-Create symlinks:
-
-```
-ln -s ~/.vim/vimrc ~/.vimrc
-ln -s ~/.vim/gvimrc ~/.gvimrc
+```bash
+git clone git://github.com/rdeese/dotvim.git ~/.vim &&
+ln -s ~/.vim/vimrc ~/.vimrc &&
+cd ~/.vim &&
+git submodule update --init
 ```
 
-Switch to the `~/.vim` directory, and fetch submodules:
-
-```
-cd ~/.vim
-git submodule init
-git submodule update
-```
+Which
+1. Clones repo
+2. Symlinks vimrc
+3. Installs all our vim plugins into bundle where they are incorporated via pathogen.
