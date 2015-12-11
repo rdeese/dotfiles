@@ -17,6 +17,10 @@ filetype indent on
 set splitbelow
 set splitright
 
+" remap windowswap to a ctrl-w command
+let g:windowswap_map_keys = 0 "prevent default bindings
+nnoremap <silent> <C-W>y :call WindowSwap#EasyWindowSwap()<CR>
+
 " ctrlP
 let g:ctrlp_cmd = 'CtrlPLastMode'
 let g:ctrlp_extensions = ['buffertag', 'tag', 'line', 'dir'] "add extention for line searching
