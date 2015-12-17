@@ -13,6 +13,9 @@ syntax on
 set nobackup
 filetype indent on
 
+" Keep space around the cursor when scrolling
+set scrolloff=8
+
 " change split opening to bottom and right instead of top and left
 set splitbelow
 set splitright
