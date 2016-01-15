@@ -8,7 +8,8 @@ set autoindent
 set expandtab
 
 set number
-colorscheme desert
+set background=light
+colorscheme solarized
 syntax on
 set nobackup
 filetype indent on
