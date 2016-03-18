@@ -13,9 +13,6 @@
 [submodule "bundle/vim-windowswap"]
 	path = bundle/vim-windowswap
 	url = https://github.com/wesQ3/vim-windowswap.git
-[submodule "bundle/vim-eunuch"]
-	path = bundle/vim-eunuch
-	url = git://github.com/tpope/vim-eunuch.git
 [submodule "bundle/vim-colors-solarized"]
 	path = bundle/vim-colors-solarized
 	url = git://github.com/altercation/vim-colors-solarized.git
