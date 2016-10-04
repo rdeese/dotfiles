@@ -48,22 +48,26 @@ command LS execute "source ~/vim_session"
 
 set laststatus=2
 
-set statusline=%f       "tail of the filename
-set statusline+=[%{strlen(&fenc)?&fenc:'none'}, "file encoding
-set statusline+=%{&ff}] "file format
-set statusline+=%h      "help file flag
-set statusline+=%m      "modified flag
-set statusline+=%r      "read only flag
-set statusline+=%y      "filetype
+exe 'highlight User1 '.g:solarized_vars['bg_orange'].g:solarized_vars['fg_base02']
+
+set statusline=%t "tail of the filename
+set statusline+=\ %1*%{&modified?'\ MODIFIED\ ':''}%*
+
+" set statusline+=[%{strlen(&fenc)?&fenc:'none'}, "file encoding
+" set statusline+=%{&ff}] "file format
+" set statusline+=%h      "help file flag
+" set statusline+=%m      "modified flag
+" set statusline+=%r      "read only flag
+" set statusline+=%y      "filetype
 set statusline+=%=      "left/right separator
 
 set statusline+=%#warningmsg#									"syntastic warning
 set statusline+=%{SyntasticStatuslineFlag()}	"syntastic flag
 set statusline+=%*
 
-set statusline+=%c,     "cursor column
-set statusline+=%l/%L   "cursor line/total lines
-set statusline+=\ %P    "percent through file
+set statusline+=\ %c,     "cursor column
+set statusline+=\ %l/%L   "cursor line/total lines
+" set statusline+=\ %P    "percent through file
 
 " default syntastic options
 let g:syntastic_always_populate_loc_list = 1
@@ -75,3 +79,10 @@ let g:syntastic_auto_loc_list = 2 " don't automatically open the loc list
 let g:syntastic_ruby_checkers = ['rubocop']
 let g:syntastic_haml_checkers = ['haml_lint']
 let g:syntastic_coffeescript_checkers = ['coffeelint']
+
+" cursorline in active window
+augroup CursorLine
+  au!
+  au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+  au WinLeave * setlocal nocursorline
+augroup END
