@@ -80,6 +80,9 @@ let g:syntastic_ruby_checkers = ['rubocop']
 let g:syntastic_haml_checkers = ['haml_lint']
 let g:syntastic_coffeescript_checkers = ['coffeelint']
 
+" enable jsx highlighting in .js files
+let g:jsx_ext_required = 0
+
 " cursorline in active window
 augroup CursorLine
   au!
