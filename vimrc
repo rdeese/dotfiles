@@ -83,6 +83,12 @@ let g:syntastic_ruby_checkers = ['rubocop']
 let g:syntastic_haml_checkers = ['haml_lint']
 let g:syntastic_coffeescript_checkers = ['coffeelint']
 
+let g:syntastic_javascript_checkers = ['eslint']
+" Point syntastic checker at locally installed `eslint` if it exists.
+if executable('node_modules/.bin/eslint')
+  let b:syntastic_javascript_eslint_exec = 'node_modules/.bin/eslint'
+endif
+
 " enable jsx highlighting in .js files
 let g:jsx_ext_required = 0
 
