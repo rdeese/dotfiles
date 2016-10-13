@@ -51,10 +51,8 @@ command LS execute "source ~/vim_session"
 
 set laststatus=2
 
-exe 'highlight User1 '.g:solarized_vars['bg_orange'].g:solarized_vars['fg_base02']
-
 set statusline=%t "tail of the filename
-set statusline+=\ %1*%{&modified?'\ MODIFIED\ ':''}%*
+set statusline+=\ %#IncSearch#%{&modified?'\ MODIFIED\ ':''}%*
 
 " set statusline+=[%{strlen(&fenc)?&fenc:'none'}, "file encoding
 " set statusline+=%{&ff}] "file format
