@@ -1,33 +1,33 @@
 [submodule "bundle/ag"]
-	path = bundle/ag
+	path = vim/bundle/ag
 	url = https://github.com/rking/ag.vim.git
 [submodule "bundle/ctrlp.vim"]
-	path = bundle/ctrlp.vim
+	path = vim/bundle/ctrlp.vim
 	url = https://github.com/ctrlpvim/ctrlp.vim.git
 [submodule "bundle/syntastic"]
-	path = bundle/syntastic
+	path = vim/bundle/syntastic
 	url = https://github.com/scrooloose/syntastic.git
 [submodule "bundle/vim-coffee-script"]
-	path = bundle/vim-coffee-script
+	path = vim/bundle/vim-coffee-script
 	url = https://github.com/kchmck/vim-coffee-script.git
 [submodule "bundle/vim-windowswap"]
-	path = bundle/vim-windowswap
+	path = vim/bundle/vim-windowswap
 	url = https://github.com/wesQ3/vim-windowswap.git
 [submodule "bundle/vim-colors-solarized"]
-	path = bundle/vim-colors-solarized
+	path = vim/bundle/vim-colors-solarized
 	url = git://github.com/altercation/vim-colors-solarized.git
 [submodule "bundle/vim-fugitive"]
-	path = bundle/vim-fugitive
+	path = vim/bundle/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive
 [submodule "bundle/vim-javascript"]
-	path = bundle/vim-javascript
+	path = vim/bundle/vim-javascript
 	url = https://github.com/pangloss/vim-javascript
 [submodule "bundle/vim-jsx"]
-	path = bundle/vim-jsx
+	path = vim/bundle/vim-jsx
 	url = git@github.com:mxw/vim-jsx.git
 [submodule "bundle/vim-surround"]
-	path = bundle/vim-surround
+	path = vim/bundle/vim-surround
 	url = git@github.com:tpope/vim-surround.git
 [submodule "bundle/vim-repeat"]
-	path = bundle/vim-repeat
+	path = vim/bundle/vim-repeat
 	url = git://github.com/tpope/vim-repeat.git
