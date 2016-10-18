@@ -44,6 +44,13 @@ if executable('ag')
   let g:ctrlp_use_caching = 0
 endif
 
+" Use ag to search for the word under the cursor (replaces backwards identifier search)
+nnoremap # :Ag! "\b<C-R><C-W>\b"<CR>:cw<CR>
+
+" Use \ as a shortcut for :Ag!
+nnoremap \ :Ag!<SPACE>
+
+
 " simple session saving
 set ssop-=options    " do not store global and local values in a session
 command SS execute "mksession! ~/vim_session"
