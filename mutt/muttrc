@@ -1,0 +1,29 @@
+set from="Rupert Deese <rupert@d2ese.com>"
+set imap_user="rupert@d2ese.com"
+
+set smtp_url="smtps://rupert@d2ese.com@mail.d2ese.com:465/"
+set spoolfile="imaps://rupert@d2ese.com@mail.d2ese.com:993/INBOX"
+
+set folder="imaps://rupert@d2ese.com@mail.d2ese.com:993/INBOX"
+set record="=Sent"
+set postponed="=Drafts"
+set mbox="=Received"
+
+set header_cache=/var/tmp/.mutt_cache
+
+# character set on messages that we send
+set send_charset="utf-8"
+# if there is no character set given on incoming messages, it is probably windows
+set assumed_charset="iso-8859-1"
+
+# make sure Vim knows Mutt is a mail client and that we compose an UTF-8 encoded message
+set editor="vim -c 'set syntax=mail ft=mail enc=utf-8'"
+
+# do not show all headers, just a few
+ignore          *
+unignore        From To Cc Bcc Date Subject
+# and in this order
+unhdr_order     *
+hdr_order       From: To: Cc: Bcc: Date: Subject:
+
+source "~/dotfiles/mutt/mutt-colors-solarized-light-16.muttrc"
