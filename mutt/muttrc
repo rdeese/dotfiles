@@ -1,15 +1,28 @@
-set from="Rupert Deese <rupert@d2ese.com>"
-set imap_user="rupert@d2ese.com"
+set from="Rupert Deese <$PRIVATE_EMAIL>"
+set imap_user="$PRIVATE_EMAIL"
+set imap_pass="$PRIVATE_EMAIL_PASS"
 
-set smtp_url="smtps://rupert@d2ese.com@mail.d2ese.com:465/"
-set spoolfile="imaps://rupert@d2ese.com@mail.d2ese.com:993/INBOX"
+set smtp_url= smtps://"$PRIVATE_EMAIL"@"$PRIVATE_EMAIL_SERVER":465/ 
+set smtp_pass="$PRIVATE_EMAIL_PASS"
+set spoolfile=imaps://"$PRIVATE_EMAIL"@"$PRIVATE_EMAIL_SERVER":993/INBOX
 
-set folder="imaps://rupert@d2ese.com@mail.d2ese.com:993/INBOX"
+set folder=imaps://"$PRIVATE_EMAIL"@"$PRIVATE_EMAIL_SERVER":993/INBOX
 set record="=Sent"
 set postponed="=Drafts"
 set mbox="=Received"
 
 set header_cache=/var/tmp/.mutt_cache
+# Store messages locally to speed things up, like searching message bodies.
+set message_cachedir=/var/tmp/.mutt_cache
+
+# Keep IMAP connection alive by polling intermittently (time in seconds).
+set imap_keepalive = 120
+
+# How often to check for new mail (time in seconds).
+set mail_check = 120
+
+# mystery line to help imap not disconnect?
+set imap_idle=yes
 
 # character set on messages that we send
 set send_charset="utf-8"
