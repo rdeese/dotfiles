@@ -32,6 +32,12 @@ set assumed_charset="iso-8859-1"
 # make sure Vim knows Mutt is a mail client and that we compose an UTF-8 encoded message
 set editor="vim -c 'set syntax=mail ft=mail enc=utf-8'"
 
+# aliases, taken from https://dev.mutt.org/trac/wiki/MuttGuide/Aliases
+set alias_file= ~/.mutt/aliases
+set sort_alias= alias
+set reverse_alias=yes
+source $alias_file
+
 # do not show all headers, just a few
 ignore          *
 unignore        From To Cc Bcc Date Subject
