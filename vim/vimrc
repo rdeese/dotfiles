@@ -14,6 +14,9 @@ colorscheme solarized
 set nobackup
 filetype indent on
 
+" reduce length of timeout waiting for rest of command
+set timeoutlen=300 " ms
+
 " Keep space around the cursor when scrolling
 set scrolloff=8
 
@@ -50,6 +53,10 @@ nnoremap # :Ag! "\b<C-R><C-W>\b"<CR>:cw<CR>
 " Use \ as a shortcut for :Ag!
 nnoremap \ :Ag!<SPACE>
 
+" Escape in normal mode clears search result highlighting
+set hlsearch
+nnoremap <esc> :noh<return><esc>
+nnoremap <esc>^[ <esc>^[
 
 " simple session saving
 set ssop-=options    " do not store global and local values in a session
