@@ -13,6 +13,7 @@ set background=light
 colorscheme solarized
 set nobackup
 filetype indent on
+filetype plugin on
 
 " reduce length of timeout waiting for rest of command
 set timeoutlen=300 " ms
@@ -93,6 +94,7 @@ let g:syntastic_auto_loc_list = 2 " don't automatically open the loc list
 
 let g:syntastic_ruby_checkers = ['rubocop']
 let g:syntastic_haml_checkers = ['haml_lint']
+let g:syntastic_python_checkers = ['pylint']
 let g:syntastic_coffeescript_checkers = ['coffeelint']
 
 let g:syntastic_javascript_checkers = ['eslint']
