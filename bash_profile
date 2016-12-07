@@ -11,4 +11,6 @@ export VISUAL=vim
 export EDITOR="$VISUAL"
 
 # include locally installed node modules
-PATH=$(npm bin):$PATH
+if command -v npm 2>/dev/null; then
+  PATH=$(npm bin):$PATH
+fi

@@ -21,9 +21,9 @@ ln -s -i ~/dotfiles/tmux.conf ~/.tmux.conf
 # add to .bash_profile
 cat >> ~/.bash_profile <<EOF
   
-  # load configuration from dotfiles.
-  # for best results, place all other modifications above this line.
-  source ~/dotfiles/bash_profile
+# load configuration from dotfiles.
+# for best results, place all other modifications above this line.
+source ~/dotfiles/bash_profile
 EOF
 source ~/.bash_profile
 
