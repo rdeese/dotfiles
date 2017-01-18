@@ -10,6 +10,9 @@ export TERM='xterm-256color'
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
+# pyenv shims
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+
 # include locally installed node modules
 if command -v npm 2>/dev/null; then
   PATH=$(npm bin):$PATH
