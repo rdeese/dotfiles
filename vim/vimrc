@@ -34,6 +34,7 @@ nnoremap <silent> <C-W>y :call WindowSwap#EasyWindowSwap()<CR>
 
 " ctrlP
 let g:ctrlp_cmd = 'CtrlPLastMode'
+let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_extensions = ['buffertag', 'tag', 'line', 'dir'] "add extention for line searching
 
 " The Silver Searcher
