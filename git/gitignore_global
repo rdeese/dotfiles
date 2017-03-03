@@ -45,3 +45,6 @@ Thumbs.db
 # Compiled python #
 ###################
 *.pyc
+
+# node_modules
+node_modules
