@@ -17,3 +17,6 @@ if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 if command -v npm 2>/dev/null; then
   PATH=$(npm bin):$PATH
 fi
+
+# homebrew cask
+export HOMEBREW_CASK_OPTS="--appdir=~/Applications"
