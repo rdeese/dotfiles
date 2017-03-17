@@ -65,6 +65,9 @@ set ssop-=options    " do not store global and local values in a session
 command SS execute "mksession! ~/vim_session"
 command LS execute "source ~/vim_session"
 
+" json formatting, given that python is installed
+command Json execute "%!python -m json.tool"
+
 set laststatus=2
 
 set statusline=%t "tail of the filename
