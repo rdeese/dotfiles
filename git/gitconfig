@@ -1,0 +1,15 @@
+[alias]
+  s = status -s
+  l = log --graph
+  co = checkout
+
+
+[format]
+	pretty = %Cred%h %Cblue%ad %<(20)%Cgreen%cn %Creset%s
+
+[log]
+  abbrevCommit = true
+  date = format:%F %R
+
+[status]
+  short = true
