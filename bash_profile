@@ -20,3 +20,38 @@ fi
 
 # homebrew cask
 export HOMEBREW_CASK_OPTS="--appdir=~/Applications"
+
+# pretty PS1
+alias __git_ps1="git branch 2>/dev/null | grep '*' | sed 's/* \(.*\)/(\1)/'"
+
+__prompt_command() {
+  BRANCH=$(git branch 2>/dev/null | grep '^*' | colrm 1 2)
+  PS1="[\W:$BRANCH] "
+  unset BRANCH
+}
+
+PROMPT_COMMAND=__prompt_command
+
+__pretty_line() {
+  OFFSET=$(bc <<< "16 + ($RANDOM % 40 + 1)*6")
+  END=$(bc <<< "$OFFSET + 5")
+  LINE=""
+
+  for C in $(seq $OFFSET $END); do
+      STUFF=$(printf ' %.0s' $(seq 1 $(bc <<< "$(tput cols)/12")))
+      LINE+="\033[48;5;${C}m"$STUFF
+  done
+  for C in $(seq $END $OFFSET); do
+      STUFF=$(printf ' %.0s' $(seq 1 $(bc <<< "$(tput cols)/12")))
+      LINE+="\033[48;5;${C}m"$STUFF
+  done
+  echo -e "$LINE"
+  tput sgr0
+
+  unset OFFSET
+  unset END
+  unset LINE
+  unset STUFF
+}
+
+bind -x '"\C-l": clear; __pretty_line'
