@@ -15,11 +15,13 @@ set header_cache=/var/tmp/.mutt_cache
 # Store messages locally to speed things up, like searching message bodies.
 set message_cachedir=/var/tmp/.mutt_cache
 
+set timeout=32
+
 # Keep IMAP connection alive by polling intermittently (time in seconds).
-set imap_keepalive = 120
+set imap_keepalive=32
 
 # How often to check for new mail (time in seconds).
-set mail_check = 120
+set mail_check=32
 
 # mystery line to help imap not disconnect?
 set imap_idle=yes
