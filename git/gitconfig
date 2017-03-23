@@ -2,6 +2,9 @@
   s = status -s
   l = log --graph
   co = checkout
+  d = diff
+  ds = diff --staged
+  tackon = commit --amend --no-edit
 
 
 [format]
