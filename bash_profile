@@ -21,12 +21,21 @@ fi
 # homebrew cask
 export HOMEBREW_CASK_OPTS="--appdir=~/Applications"
 
-# pretty PS1
-alias __git_ps1="git branch 2>/dev/null | grep '*' | sed 's/* \(.*\)/(\1)/'"
+# show time command was run in history
+HISTTIMEFORMAT="%F %R "
 
+# pretty PS1
 __prompt_command() {
+  # returns the emoji clock closest to the current time
+  # CLOCK=$(date +%I\ 60*%M+45-30/24%%2+2~C*+C8335+0PP|dc|iconv -f ucs-4)
   BRANCH=$(git branch 2>/dev/null | grep '^*' | colrm 1 2)
-  PS1="[\W:$BRANCH] "
+  GREY="\033[38;5;14m"
+  JADE="\033[38;5;6m"
+  LAVENDER="\033[38;5;13m"
+  # $? gives exit code of last command
+  # \! gives history # of this command
+  #
+  PS1="$LAVENDER\W:$GREY$BRANCH$LAVENDER *>$GREY "
   unset BRANCH
 }
 
@@ -45,6 +54,7 @@ __pretty_line() {
       STUFF=$(printf ' %.0s' $(seq 1 $(bc <<< "$(tput cols)/12")))
       LINE+="\033[48;5;${C}m"$STUFF
   done
+  LINE+=$(printf ' %.0s' $(seq 1 $(bc <<< "$(tput cols) - 12*($(tput cols)/12)")))
   echo -e "$LINE"
   tput sgr0
 
