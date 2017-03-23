@@ -29,13 +29,14 @@ __prompt_command() {
   # returns the emoji clock closest to the current time
   # CLOCK=$(date +%I\ 60*%M+45-30/24%%2+2~C*+C8335+0PP|dc|iconv -f ucs-4)
   BRANCH=$(git branch 2>/dev/null | grep '^*' | colrm 1 2)
-  GREY="\033[38;5;14m"
-  JADE="\033[38;5;6m"
-  LAVENDER="\033[38;5;13m"
+  GREY="\[\033[38;5;14m\]"
+  JADE="\[\033[38;5;6m\]"
+  LAVENDER="\[\033[38;5;13m\]"
   # $? gives exit code of last command
   # \! gives history # of this command
-  #
-  PS1="$LAVENDER\W:$GREY$BRANCH$LAVENDER *>$GREY "
+  PS1="$LAVENDER\W"
+  if [ -n "$BRANCH" ]; then PS1+=":$GREY$BRANCH"; fi
+  PS1+="$LAVENDER *>$GREY "
   unset BRANCH
 }
 
