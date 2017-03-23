@@ -25,27 +25,62 @@ export HOMEBREW_CASK_OPTS="--appdir=~/Applications"
 HISTTIMEFORMAT="%F %R "
 
 # pretty PS1
+__git_branch_and_status () {
+  # Get the status of the repo and color the branch name appropriately
+  local STATUS=$(git status --long 2>&1)
+  local BRANCH=$(git branch 2>/dev/null | grep '^*' | colrm 1 2)
+  local GREEN="\[\033[32m\]"
+  local RED="\[\033[31m\]"
+  local YELLOW="\[\033[33m\]"
+  if [[ "$STATUS" != *'Not a git repository'* ]]
+  then
+    PS1+="$DEFAULT:"
+    if [[ "$STATUS" != *'working tree clean'* ]]
+    then
+      if [[ "$STATUS" == *'Changes to be committed'* ]]
+      then
+        # green if all changes are staged
+        PS1+="$GREEN"
+      fi
+      if [[ "$STATUS" == *'Changes not staged for commit'* ]]
+      then
+        # red if there are unstaged changes
+        PS1+="$RED"
+      fi
+    else
+      if [[ "$STATUS" == *'Your branch is ahead'* ]]
+      then
+        # yellow if need to push
+        PS1+="$YELLOW"
+      else
+        # else default
+        PS1+="$DEFAULT"
+      fi
+    fi
+    PS1+="$BRANCH"
+  fi
+}
+
 __prompt_command() {
   # returns the emoji clock closest to the current time
   # CLOCK=$(date +%I\ 60*%M+45-30/24%%2+2~C*+C8335+0PP|dc|iconv -f ucs-4)
-  BRANCH=$(git branch 2>/dev/null | grep '^*' | colrm 1 2)
-  GREY="\[\033[38;5;14m\]"
-  JADE="\[\033[38;5;6m\]"
-  LAVENDER="\[\033[38;5;13m\]"
+  local DEFAULT="\[\033[0m\]"
+  local JADE="\[\033[36m\]"
+  local LAVENDER="\[\033[95m\]"
   # $? gives exit code of last command
   # \! gives history # of this command
   PS1="$LAVENDER\W"
-  if [ -n "$BRANCH" ]; then PS1+=":$GREY$BRANCH"; fi
-  PS1+="$LAVENDER *>$GREY "
-  unset BRANCH
+  __git_branch_and_status
+  PS1+="$LAVENDER *>$DEFAULT "
 }
 
 PROMPT_COMMAND=__prompt_command
 
 __pretty_line() {
-  OFFSET=$(bc <<< "16 + ($RANDOM % 40 + 1)*6")
-  END=$(bc <<< "$OFFSET + 5")
-  LINE=""
+  local OFFSET=$(bc <<< "16 + ($RANDOM % 40 + 1)*6")
+  local END=$(bc <<< "$OFFSET + 5")
+  local LINE=""
+  local STUFF=""
 
   for C in $(seq $OFFSET $END); do
       STUFF=$(printf ' %.0s' $(seq 1 $(bc <<< "$(tput cols)/12")))
@@ -58,11 +93,6 @@ __pretty_line() {
   LINE+=$(printf ' %.0s' $(seq 1 $(bc <<< "$(tput cols) - 12*($(tput cols)/12)")))
   echo -e "$LINE"
   tput sgr0
-
-  unset OFFSET
-  unset END
-  unset LINE
-  unset STUFF
 }
 
 bind -x '"\C-l": clear; __pretty_line'
