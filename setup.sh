@@ -18,6 +18,10 @@ git config --global core.excludesfile ~/.git/gitignore_global
 # add tmux configuration
 ln -s -i ~/dotfiles/tmux.conf ~/.tmux.conf
 
+# add mutt configuration
+ln -s -i ~/dotfiles/mutt/muttrc ~/.muttrc
+ln -s -i ~/dotfiles/mutt/mailcap ~/.mailcap
+
 # add to .bash_profile
 cat >> ~/.bash_profile <<EOF
   
