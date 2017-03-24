@@ -42,7 +42,7 @@ __git_branch_and_status () {
         # green if all changes are staged
         PS1+="$GREEN"
       fi
-      if [[ "$STATUS" == *'Changes not staged for commit'* ]]
+      if [[ "$STATUS" == *'Changes not staged for commit'* ]] || [[ "$STATUS" == *'Unmerged paths'* ]]
       then
         # red if there are unstaged changes
         PS1+="$RED"
