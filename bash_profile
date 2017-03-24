@@ -57,7 +57,15 @@ __git_branch_and_status () {
         PS1+="$DEFAULT"
       fi
     fi
+
     PS1+="$BRANCH"
+
+    if [[ "$STATUS" == *'Untracked files'* ]]
+    then
+      # red question mark to indicate untracked files
+      PS1+="$RED"
+      PS1+="?"
+    fi
   fi
 }
 
