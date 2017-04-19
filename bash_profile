@@ -85,7 +85,7 @@ __prompt_command() {
 PROMPT_COMMAND=__prompt_command
 
 __pretty_line() {
-  local OFFSET=$(bc <<< "16 + ($RANDOM % 40 + 1)*6")
+  local OFFSET=$(bc <<< "16 + ($RANDOM % 36 + 1)*6")
   local END=$(bc <<< "$OFFSET + 5")
   local LINE=""
   local STUFF=""
