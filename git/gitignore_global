@@ -46,6 +46,10 @@ Thumbs.db
 ###################
 *.pyc
 
+# pytest #
+##########
+.cache
+
 # node_modules
 node_modules
 
