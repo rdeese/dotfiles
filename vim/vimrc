@@ -32,10 +32,12 @@ set splitright
 let g:windowswap_map_keys = 0 "prevent default bindings
 nnoremap <silent> <C-W>y :call WindowSwap#EasyWindowSwap()<CR>
 
-" ctrlP
-let g:ctrlp_cmd = 'CtrlPLastMode'
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_extensions = ['buffertag', 'tag', 'line', 'dir'] "add extention for line searching
+" fzf (assumes installed with homebrew)
+set rtp+=/usr/local/opt/fzf
+nnoremap <c-p> :FZF<cr>
+let g:fzf_history_dir = '~/.local/share/fzf-history'
+let g:fzf_layout = { 'down': '~30%' }
+let $FZF_DEFAULT_COMMAND = 'ag -l --nocolor -g ""'
 
 " The Silver Searcher
 if executable('ag')
