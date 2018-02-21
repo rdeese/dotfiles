@@ -54,4 +54,52 @@ unignore        From To Cc Bcc Date Subject
 unhdr_order     *
 hdr_order       From: To: Cc: Bcc: Date: Subject:
 
+# Index style
+set date_format="%Y-%m-%d"
+set index_format="%D %Z %-15.15L %s"
+folder-hook . 'push <collapse-all>'
+
+# index controls
+bind index <space> collapse-thread
+bind index G last-entry
+bind index gg first-entry
+bind index R group-reply
+unset collapse_unread
+
+# pager display settings
+auto_view text/html
+alternative_order text/html text/plain text/enriched
+
+# pager controls
+set pager_stop
+unset markers
+bind pager gg top
+bind pager G bottom
+bind pager R group-reply
+bind pager j next-line
+bind pager k previous-line
+macro pager p "<pipe-message>viewhtmlmsg<enter>"
+macro index p "<pipe-message>viewhtmlmsg<enter>"
+
+# scroll menus rather than redrawing to the next page
+set menu_scroll
+
+# reply settings
+set include="yes"
+set fast_reply
+
+# don't show help at the top of the page
+unset help
+
+# turn off "are you sure" messages
+unset confirmappend
+set delete="yes"
+unset wait_key
+
+# move to trash when deleting
+macro index d "<save-message>=Trash<enter>"
+
+# don't mark unread messages as old
+unset mark_old
+
 source "~/dotfiles/mutt/mutt-colors-solarized-light-16.muttrc"
