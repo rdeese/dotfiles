@@ -94,7 +94,7 @@ unset help
 # turn off "are you sure" messages
 unset confirmappend
 set delete="yes"
-unset wait_key
+# unset wait_key <-- this breaks viewing attachments for some reason
 
 # move to trash when deleting
 macro index d "<save-message>=Trash<enter>"
