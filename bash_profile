@@ -15,8 +15,10 @@ if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
 # include locally installed node modules
 if command -v npm 2>/dev/null; then
-  PATH=$(npm bin):$PATH
+  export PATH=$(npm bin):$PATH
 fi
+
+export PATH=/usr/local/bin:$PATH
 
 # homebrew cask
 export HOMEBREW_CASK_OPTS="--appdir=~/Applications"
