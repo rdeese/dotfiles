@@ -14,6 +14,9 @@ ln -s -i ~/.vim/vimrc ~/.vimrc
 # add git configuration
 ln -s -i ~/dotfiles/git ~/.git
 git config --global core.excludesfile ~/.git/gitignore_global
+git config --global --add include.path ~/.git/gitconfig
+git config --global --add user.name rdeese
+git config --global --add user.email rdeese@hmc.edu
 
 # add tmux configuration
 ln -s -i ~/dotfiles/tmux.conf ~/.tmux.conf
