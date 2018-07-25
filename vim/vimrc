@@ -76,6 +76,7 @@ set laststatus=2
 " build a beautiful status line
 set statusline=%t "tail of the filename
 set statusline+=\ %#IncSearch#%{&modified?'\ MODIFIED\ ':''}%*
+set statusline+=\ %#pandocStrikeoutDefinition#%{&modifiable?'':'\ READ\ ONLY\ '}%*
 
 " set statusline+=[%{strlen(&fenc)?&fenc:'none'}, "file encoding
 " set statusline+=%{&ff}] "file format
