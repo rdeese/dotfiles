@@ -94,13 +94,7 @@ set statusline+=\ %l/%L   "cursor line/total lines
 " set statusline+=\ %P    "percent through file
 
 " build a beautiful tabline
-function CustomTabLabel(tab_number, selected)
-  let buflist = tabpagebuflist(a:tab_number)
-  let num_windows = tabpagewinnr(a:tab_number, '$')
-  let focused_window = tabpagewinnr(a:tab_number)
-  let label = ''
-  let any_buffers_modified = count(map(copy(buflist), {index, val -> getbufvar(val, "&mod")}), 1)
-
+function CustomTabNumber(tab_number, selected, buflist)
   if a:selected
     let default_highlight = '%#TabLineSel#'
     let tab_number_highlight =  '%#TabLineSel#'
@@ -111,23 +105,52 @@ function CustomTabLabel(tab_number, selected)
     let modified_highlight =  '%#DiffDelete#'
   endif
 
+  let any_buffers_modified = count(map(copy(a:buflist), {index, val -> getbufvar(val, "&mod")}), 1)
   if any_buffers_modified > 0
     let tab_number_string = modified_highlight . a:tab_number . default_highlight
   else
     let tab_number_string = tab_number_highlight . a:tab_number . default_highlight
   endif
 
-  let label .= tab_number_string . ' '
-  let label .= pathshorten(bufname(buflist[focused_window - 1]))
+  return tab_number_string
+endfunction
+
+function TruncatePath(path, width)
+  let start_index = strchars(a:path) - a:width
+  return strcharpart(a:path, start_index, a:width)
+endfunction
+
+function CustomTabLabel(tab_number, selected, allowed_width)
+  let buflist = tabpagebuflist(a:tab_number)
+  let num_windows = tabpagewinnr(a:tab_number, '$')
+  let focused_window = tabpagewinnr(a:tab_number)
+
+  let tab_number_string = CustomTabNumber(a:tab_number, a:selected, buflist)
+
+  let path = pathshorten(bufname(buflist[focused_window - 1]))
+
+  let extra_window_count = ''
   if num_windows > 1
-    let label .= ' +' . (num_windows - 1)
+    let extra_window_count .= '+' . (num_windows - 1)
   endif
-  return label
+
+  let whitespace_width = 4 " 2 for space between elements, 2 for space around
+  let consumed_width = strchars(string(a:tab_number)) + strchars(extra_window_count) + whitespace_width 
+  let truncated_path = TruncatePath(path, a:allowed_width - consumed_width)
+
+  let elements = [tab_number_string, truncated_path]
+  if (strchars(extra_window_count) > 0)
+    let elements += [extra_window_count]
+  endif
+
+  return ' ' . join(elements, ' ') . ' '
 endfunction
 
 function CustomTabLine()
   let s = ''
-  for i in range(tabpagenr('$'))
+  let num_tabs = tabpagenr('$')
+  let columns_per_tab = &columns/num_tabs " integer division rounds down
+  for i in range(num_tabs)
     " select the highlighting
     let is_selected_tab = i + 1 == tabpagenr()
     if is_selected_tab
@@ -142,7 +165,7 @@ function CustomTabLine()
     let s .= '%' . (i + 1) . 'T'
 
     " the label is made by MyTabLabel()
-    let s .= ' ' . CustomTabLabel(i + 1, is_selected_tab) . ' '
+    let s .= CustomTabLabel(i + 1, is_selected_tab, columns_per_tab)
   endfor
 
   " after the last tab fill with TabLineFill and reset tab page nr
