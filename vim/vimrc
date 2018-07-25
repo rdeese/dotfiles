@@ -70,8 +70,10 @@ command LS execute "source ~/vim_session"
 " json formatting, given that python is installed
 command Json execute "%!python -m json.tool"
 
+" TODO: what does this do?
 set laststatus=2
 
+" build a beautiful status line
 set statusline=%t "tail of the filename
 set statusline+=\ %#IncSearch#%{&modified?'\ MODIFIED\ ':''}%*
 
@@ -90,6 +92,66 @@ set statusline+=%*
 set statusline+=\ %c,     "cursor column
 set statusline+=\ %l/%L   "cursor line/total lines
 " set statusline+=\ %P    "percent through file
+
+" build a beautiful tabline
+function CustomTabLabel(tab_number, selected)
+  let buflist = tabpagebuflist(a:tab_number)
+  let num_windows = tabpagewinnr(a:tab_number, '$')
+  let focused_window = tabpagewinnr(a:tab_number)
+  let label = ''
+  let any_buffers_modified = count(map(copy(buflist), {index, val -> getbufvar(val, "&mod")}), 1)
+
+  if a:selected
+    let default_highlight = '%#TabLineSel#'
+    let tab_number_highlight =  '%#TabLineSel#'
+    let modified_highlight =  '%#MatchParen#'
+  else
+    let default_highlight = '%#TabLine#'
+    let tab_number_highlight = '%#Folded#' 
+    let modified_highlight =  '%#DiffDelete#'
+  endif
+
+  if any_buffers_modified > 0
+    let tab_number_string = modified_highlight . a:tab_number . default_highlight
+  else
+    let tab_number_string = tab_number_highlight . a:tab_number . default_highlight
+  endif
+
+  let label .= tab_number_string . ' '
+  let label .= pathshorten(bufname(buflist[focused_window - 1]))
+  if num_windows > 1
+    let label .= ' +' . (num_windows - 1)
+  endif
+  return label
+endfunction
+
+function CustomTabLine()
+  let s = ''
+  for i in range(tabpagenr('$'))
+    " select the highlighting
+    let is_selected_tab = i + 1 == tabpagenr()
+    if is_selected_tab
+      let current_highlight = '%#TabLineSel#'
+    else
+      let current_highlight = '%#TabLine#'
+    endif
+
+    let s .= current_highlight
+
+    " set the tab page number (for mouse clicks)
+    let s .= '%' . (i + 1) . 'T'
+
+    " the label is made by MyTabLabel()
+    let s .= ' ' . CustomTabLabel(i + 1, is_selected_tab) . ' '
+  endfor
+
+  " after the last tab fill with TabLineFill and reset tab page nr
+  let s .= '%#TabLineFill#%T'
+
+  return s
+endfunction
+
+set tabline=%!CustomTabLine()
 
 " default syntastic options
 let g:syntastic_always_populate_loc_list = 1
