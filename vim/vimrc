@@ -128,6 +128,9 @@ function CustomTabLabel(tab_number, selected, allowed_width)
   let tab_number_string = CustomTabNumber(a:tab_number, a:selected, buflist)
 
   let path = pathshorten(bufname(buflist[focused_window - 1]))
+  if (strchars(path) == 0)
+    let path = '[No Name]'
+  endif
 
   let extra_window_count = ''
   if num_windows > 1
