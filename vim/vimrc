@@ -1,4 +1,17 @@
-execute pathogen#infect()
+" execute pathogen#infect()
+call plug#begin('~/.vim/plugged')
+Plug 'rking/ag.vim'
+Plug 'ElmCast/elm-vim'
+Plug 'scrooloose/syntastic'
+Plug 'kchmck/vim-coffee-script'
+Plug 'altercation/vim-colors-solarized'
+Plug 'tpope/vim-fugitive'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'wesQ3/vim-windowswap'
+call plug#end()
 
 " use two spaces for indents, and make them actual spaces
 set backspace=2 " '2' doesn't mean 2 spaces; see :help 'backspace' for details

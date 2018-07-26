@@ -1,1 +1,4 @@
 .netrwhist
+
+vim/plugged/*
+!vim/plugged/README.md
