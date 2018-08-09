@@ -63,7 +63,7 @@ endif
 " Grepper Configuration
 "
 " Use Grepper to search for the word under the cursor using ag (replaces backwards identifier search)
-nnoremap # :Grepper -ag -cword -noprompt<CR>
+nnoremap # :Grepper -cword -noprompt<CR>
 
 " Use \ as a shortcut for :Grepper
 nnoremap \ :Grepper<CR>
@@ -207,7 +207,7 @@ set tabline=%!CustomTabLine()
 " default syntastic options
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_auto_loc_list = 2 " don't automatically open the loc list
 
