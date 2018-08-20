@@ -14,6 +14,8 @@ Plug 'mhinz/vim-grepper'
 Plug 'yssl/QFEnter'
 call plug#end()
 
+runtime macros/matchit.vim
+
 " use two spaces for indents, and make them actual spaces
 set backspace=2 " '2' doesn't mean 2 spaces; see :help 'backspace' for details
 set shiftwidth=2
