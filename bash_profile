@@ -14,7 +14,7 @@ export EDITOR="$VISUAL"
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
 # include locally installed node modules
-if command -v npm 2>/dev/null; then
+if command -v npm >/dev/null; then
   export PATH=$(npm bin):$PATH
 fi
 
