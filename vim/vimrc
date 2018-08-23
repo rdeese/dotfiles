@@ -50,7 +50,7 @@ nnoremap <silent> <C-W>y :call WindowSwap#EasyWindowSwap()<CR>
 
 " fzf (assumes installed with homebrew)
 set rtp+=/usr/local/opt/fzf
-nnoremap <c-p> :FZF<cr>
+nnoremap <C-P> :FZF<CR>
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 let g:fzf_layout = { 'down': '~30%' }
 let $FZF_DEFAULT_COMMAND = 'ag -l --nocolor -g ""'
@@ -76,9 +76,6 @@ xmap gw <plug>(GrepperOperator)
 " QFEnter configuration
 let g:qfenter_keymap = {}
 let g:qfenter_keymap.open = ['<C-CR>']
-let g:qfenter_keymap.hopen = ['<C-x>']
-let g:qfenter_keymap.vopen = ['<C-v>']
-let g:qfenter_keymap.topen = ['<C-t>']
 let g:qfenter_keymap.hopen_keep = ['<C-X>']
 let g:qfenter_keymap.vopen_keep = ['<C-V>']
 let g:qfenter_keymap.topen_keep = ['<C-T>']
