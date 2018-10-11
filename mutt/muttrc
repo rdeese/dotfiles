@@ -64,6 +64,7 @@ bind index <space> collapse-thread
 bind index G last-entry
 bind index gg first-entry
 bind index R group-reply
+bind index M recall-message
 unset collapse_unread
 
 # pager display settings
