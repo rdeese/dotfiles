@@ -19,7 +19,8 @@ git config --global --add user.name rdeese
 git config --global --add user.email rdeese@hmc.edu
 
 # add tmux configuration
-ln -s -i ~/dotfiles/tmux.conf ~/.tmux.conf
+ln -s -i ~/dotfiles/tmux/tmux.conf ~/.tmux.conf
+alias tmux-init='~/dotfiles/tmux/tmux-init.sh'
 
 # add mutt configuration
 ln -s -i ~/dotfiles/mutt/muttrc ~/.muttrc
