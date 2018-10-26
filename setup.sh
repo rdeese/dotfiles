@@ -25,6 +25,10 @@ ln -s -i ~/dotfiles/tmux.conf ~/.tmux.conf
 ln -s -i ~/dotfiles/mutt/muttrc ~/.muttrc
 ln -s -i ~/dotfiles/mutt/mailcap ~/.mailcap
 
+# add default python linter configurations
+ln -s -i ~/dotfiles/python/flake8 ~/.flake8
+ln -s -i ~/dotfiles/python/pylintrc ~/.pylintrc
+
 # add to .bash_profile
 cat >> ~/.bash_profile <<EOF
   
