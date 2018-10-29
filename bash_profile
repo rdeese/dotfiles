@@ -26,6 +26,8 @@ alias mp-tmux='tmux new-s -dA -s anything -c ~\; new-s -dA -s 3TB -c /Volumes/3T
 alias civis-tmux='tmux new-s -dA -s anything -c ~\; new-s -dA -s platform -c ~/Documents/console\; new-s -dA -s metawork -c ~/Documents/work-notes\; attach-session -t anything'
 alias tmux-init='~/dotfiles/tmux/tmux-init.sh'
 
+alias tmns='tmux new-s -d -s'
+
 # homebrew cask
 export HOMEBREW_CASK_OPTS="--appdir=~/Applications"
 
