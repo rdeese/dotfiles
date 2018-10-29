@@ -10,6 +10,9 @@ export TERM='xterm-256color'
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
+# /usr/local/bin needs to come before /usr/bin for homebrew
+export PATH=/usr/local/bin:$PATH
+
 # pyenv shims
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
