@@ -13,6 +13,7 @@ Plug 'wesQ3/vim-windowswap'
 Plug 'mhinz/vim-grepper'
 Plug 'yssl/QFEnter'
 Plug 'w0rp/ale'
+Plug 'vim-python/python-syntax'
 call plug#end()
 
 runtime macros/matchit.vim
@@ -31,6 +32,9 @@ colorscheme solarized
 set nobackup
 filetype indent on
 filetype plugin on
+
+" turn on vim-python/python-syntax
+let g:python_highlight_all = 1
 
 " reduce length of timeout waiting for rest of command
 set timeoutlen=300 " ms
