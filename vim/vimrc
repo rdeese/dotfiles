@@ -33,6 +33,9 @@ set nobackup
 filetype indent on
 filetype plugin on
 
+" Set <Leader> key
+let mapleader=','
+
 " turn on vim-python/python-syntax
 let g:python_highlight_all = 1
 
@@ -44,6 +47,10 @@ set scrolloff=8
 
 " To encourage macro usage
 nnoremap <Space> @q
+
+" Shortcut for deleting into the null register ("_), to preserve clipboard
+" contents
+nnoremap -d "_d
 
 " change split opening to bottom and right instead of top and left
 set splitbelow
