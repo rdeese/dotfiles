@@ -14,6 +14,7 @@ Plug 'mhinz/vim-grepper'
 Plug 'yssl/QFEnter'
 Plug 'w0rp/ale'
 Plug 'vim-python/python-syntax'
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 runtime macros/matchit.vim
