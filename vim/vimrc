@@ -5,6 +5,7 @@ Plug 'kchmck/vim-coffee-script'
 Plug 'altercation/vim-colors-solarized'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
+Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'tpope/vim-repeat'
@@ -240,3 +241,6 @@ augroup END
 
 " cooperate with crontab editing
 autocmd filetype crontab setlocal nobackup nowritebackup
+
+" specify gitlab url for fugitive-gitlab
+let g:fugitive_gitlab_domains = ['https://gitlab.teamhologram.ninja']
