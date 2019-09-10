@@ -67,7 +67,7 @@ set rtp+=/usr/local/opt/fzf
 nnoremap <C-P> :FZF<CR>
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 let g:fzf_layout = { 'down': '~30%' }
-let $FZF_DEFAULT_COMMAND = 'ag -l --nocolor -g ""'
+let $FZF_DEFAULT_COMMAND = 'ag -l --nocolor --hidden --ignore .git -g ""'
 
 " The Silver Searcher
 if executable('ag')
