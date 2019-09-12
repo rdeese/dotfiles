@@ -220,6 +220,10 @@ let g:ale_lint_on_enter = 0
 let g:ale_linters = {
 \  'javascript': ['eslint'],
 \}
+let g:ale_javascript_eslint_suppress_eslintignore = 1
+if filereadable('./.eslintrc-personal.js')
+  let g:ale_javascript_eslint_options = '-c .eslintrc-personal.js'
+endif
 
 " ported old syntastic configuration, to fall back to if running more linters
 " is causing problems

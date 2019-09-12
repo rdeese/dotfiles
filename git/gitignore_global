@@ -53,6 +53,9 @@ Thumbs.db
 # node_modules
 node_modules
 
+# personal eslint additions
+.eslintrc-personal.js
+
 # elm #
 #######
 elm-stuff
