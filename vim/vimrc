@@ -15,6 +15,7 @@ Plug 'yssl/QFEnter'
 Plug 'w0rp/ale'
 Plug 'vim-python/python-syntax'
 Plug 'junegunn/fzf.vim'
+Plug 'Konfekt/FastFold'
 call plug#end()
 
 runtime macros/matchit.vim
@@ -33,6 +34,12 @@ colorscheme solarized
 set nobackup
 filetype indent on
 filetype plugin on
+
+" try out syntax folding by default
+let php_folding=2
+set foldminlines=5
+autocmd Syntax * setlocal foldmethod=syntax
+autocmd Syntax * normal zR
 
 " Set <Leader> key
 let mapleader=','
