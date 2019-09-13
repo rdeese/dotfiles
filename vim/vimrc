@@ -83,7 +83,9 @@ endif
 
 """"""""""""""""""""""""""""""""
 " Grepper Configuration
-"
+
+let g:grepper = {}  " initialize g:grepper with empty dictionary
+
 " Use Grepper to search for the word under the cursor using ag (replaces backwards identifier search)
 nnoremap # :Grepper -cword -noprompt<CR>
 
@@ -92,6 +94,9 @@ nnoremap \ :Grepper<CR>
 
 nmap gw <plug>(GrepperOperator)
 xmap gw <plug>(GrepperOperator)
+
+let g:grepper.tools =
+  \ ['ag', 'git', 'ack']
 
 " QFEnter configuration
 let g:qfenter_keymap = {}
