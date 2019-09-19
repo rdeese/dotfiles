@@ -118,6 +118,9 @@ command LS execute "source ~/vim_session"
 " json formatting, given that python is installed
 command Json execute "%!python -m json.tool"
 
+" xml formatting, given that tidy is installed
+command Xml execute "%! tidy -miq -xml -wrap 0"
+
 " TODO: what does this do?
 set laststatus=2
 
