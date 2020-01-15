@@ -34,6 +34,9 @@ export HOMEBREW_CASK_OPTS="--appdir=~/Applications"
 # show time command was run in history
 HISTTIMEFORMAT="%F %R "
 
+# suppress catalina's bash deprecation warning
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
 # pretty PS1
 __git_branch_and_status () {
   # Get the status of the repo and color the branch name appropriately
