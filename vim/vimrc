@@ -13,9 +13,9 @@ Plug 'wesQ3/vim-windowswap'
 Plug 'mhinz/vim-grepper'
 Plug 'yssl/QFEnter'
 Plug 'w0rp/ale'
-Plug 'vim-python/python-syntax'
 Plug 'junegunn/fzf.vim'
 Plug 'Konfekt/FastFold'
+Plug 'sheerun/vim-polyglot'
 call plug#end()
 
 runtime macros/matchit.vim
