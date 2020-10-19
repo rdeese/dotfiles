@@ -4,7 +4,7 @@
 source ~/.git/git-completion.bash
 
 # for vim with tmux
-export TERM='xterm-256color'
+# export TERM='xterm-256color'
 
 # set default editor, partially so that tmux uses vim bindings.
 export VISUAL=vim

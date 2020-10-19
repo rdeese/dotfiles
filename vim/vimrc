@@ -2,6 +2,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'ElmCast/elm-vim'
 Plug 'kchmck/vim-coffee-script'
 Plug 'altercation/vim-colors-solarized'
+Plug 'owickstrom/vim-colors-paramount'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'shumphrey/fugitive-gitlab.vim'
@@ -30,6 +31,7 @@ set expandtab
 set number
 syntax enable
 set background=light
+" colorscheme paramount
 colorscheme solarized
 set nobackup
 filetype indent on
@@ -234,22 +236,17 @@ let g:ale_lint_on_insert_leave = 0
 let g:ale_lint_on_enter = 0
 let g:ale_linters = {
 \  'javascript': ['eslint'],
+\  'python': ['flake8'],
+\}
+let g:ale_fixers = {
+\  'javascript': ['prettier'],
+\  'python': ['black'],
+\  'sql': ['pgformatter'],
 \}
 let g:ale_javascript_eslint_suppress_eslintignore = 1
 if filereadable('./.eslintrc-personal.js')
   let g:ale_javascript_eslint_options = '-c .eslintrc-personal.js'
 endif
-
-" ported old syntastic configuration, to fall back to if running more linters
-" is causing problems
-" let g:ale_linters = {
-"       \  'ruby': ['rubocop'],
-"       \  'haml': ['haml_lint'],
-"       \  'python': ['flake8'],
-"       \  'coffeescript': ['coffeelint'],
-"       \  'elm': ['elm_make'],
-"       \  'javascript': ['eslint']
-"       \}
 
 " enable jsx highlighting in .js files
 let g:jsx_ext_required = 0
