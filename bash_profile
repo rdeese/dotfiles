@@ -45,9 +45,9 @@ __git_branch_and_status () {
   local GREEN="\[\033[32m\]"
   local RED="\[\033[31m\]"
   local YELLOW="\[\033[33m\]"
-  if [[ "$STATUS" != *'Not a git repository'* ]]
+  if [[ "$STATUS" != *'not a git repository'* ]]
   then
-    PS1+="$DEFAULT:"
+    PS1+=":$DEFAULT"
     if [[ "$STATUS" != *'working tree clean'* ]]
     then
       if [[ "$STATUS" == *'Changes to be committed'* ]]
@@ -85,6 +85,7 @@ __git_branch_and_status () {
 __prompt_command() {
   # returns the emoji clock closest to the current time
   # CLOCK=$(date +%I\ 60*%M+45-30/24%%2+2~C*+C8335+0PP|dc|iconv -f ucs-4)
+  local LAST_COMMAND_SUCCESS=$[$? == 0]
   local DEFAULT="\[\033[0m\]"
   local JADE="\[\033[36m\]"
   local LAVENDER="\[\033[95m\]"
@@ -92,7 +93,12 @@ __prompt_command() {
   # \! gives history # of this command
   PS1="$LAVENDER\W"
   __git_branch_and_status
-  PS1+="$LAVENDER *>$DEFAULT "
+  if [ $LAST_COMMAND_SUCCESS = 1 ]; then
+    PS1+="\[\033[32m\]"
+  else
+    PS1+="\[\033[31m\]"
+  fi
+  PS1+=" λ.$DEFAULT "
 }
 
 PROMPT_COMMAND=__prompt_command

@@ -2,9 +2,14 @@
   s = status -s
   l = log --graph
   co = checkout
+  cm = commit -m
   d = diff
   ds = diff --staged
   tackon = commit --amend --no-edit
+  p = push
+  puo = push -u origin
+
+
 
 
 [format]
