@@ -21,3 +21,6 @@
 
 [status]
   short = true
+
+[pull]
+	ff = only
