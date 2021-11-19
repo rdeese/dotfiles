@@ -14,7 +14,7 @@ Plug 'wesQ3/vim-windowswap'
 Plug 'mhinz/vim-grepper'
 Plug 'yssl/QFEnter'
 Plug 'w0rp/ale'
-Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'Konfekt/FastFold'
 Plug 'sheerun/vim-polyglot'
 call plug#end()

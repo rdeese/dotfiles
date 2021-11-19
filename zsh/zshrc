@@ -1,44 +1,23 @@
-# add via line in bash_profile or bash_rc:
-# source ~/dotfiles/bash_profile
+# Add completions for git
+zstyle ':completion:*:*:git:*' script ~/dotfiles/git/git-completion.bash
+fpath+=~/dotfiles/zsh/functions
 
-source ~/.git/git-completion.bash
-
-# for vim with tmux
-# export TERM='xterm-256color'
+# Initialize the zshell completion tool
+autoload -Uz compinit && compinit
 
 # set default editor, partially so that tmux uses vim bindings.
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
-# /usr/local/bin needs to come before /usr/bin for homebrew
-export PATH=/usr/local/bin:$PATH
 
-# pyenv shims
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+# zsh command correction suggestions
+setopt CORRECT
+setopt CORRECT_ALL
 
-# include locally installed node modules
-if command -v npm >/dev/null; then
-  export PATH=$(npm bin):$PATH
-fi
-
-# export dagster home var
-export DAGSTER_HOME=~/dagster_home
 
 # aliases
-alias mp-tmux='tmux new-s -dA -s anything -c ~\; new-s -dA -s 3TB -c /Volumes/3TB\; new-s -dA -s 4TB -c /Volumes/4TB\; attach-session -t anything'
-alias civis-tmux='tmux new-s -dA -s anything -c ~\; new-s -dA -s platform -c ~/Documents/console\; new-s -dA -s metawork -c ~/Documents/work-notes\; attach-session -t anything'
-alias tmux-init='~/dotfiles/tmux/tmux-init.sh'
-
 alias tmns='tmux new-s -d -s'
 
-# homebrew cask
-export HOMEBREW_CASK_OPTS="--appdir=~/Applications"
-
-# show time command was run in history
-HISTTIMEFORMAT="%F %R "
-
-# suppress catalina's bash deprecation warning
-export BASH_SILENCE_DEPRECATION_WARNING=1
 
 # pretty PS1
 __git_branch_and_status () {
@@ -125,4 +104,6 @@ __pretty_line() {
   tput sgr0
 }
 
-bind -x '"\C-l": clear; __pretty_line'
+__clear_with_line () { clear; __pretty_line; zle redisplay }
+zle -N __clear_with_line
+bindkey "\C-l" __clear_with_line

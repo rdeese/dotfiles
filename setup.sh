@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 # PREREQUISITES
 # - this repo must be cloned into ~/dotfiles
@@ -7,10 +7,12 @@
 
 echo "Setting up dotfiles..."
 
+## VIM ###
 # add vim configuration, prompt user if anything would be overwritten
 ln -s -i ~/dotfiles/vim ~/.vim
 ln -s -i ~/.vim/vimrc ~/.vimrc
 
+## GIT ##
 # add git configuration
 ln -s -i ~/dotfiles/git ~/.git
 git config --global core.excludesfile ~/.git/gitignore_global
@@ -18,25 +20,41 @@ git config --global --add include.path ~/.git/gitconfig
 git config --global --add user.name rdeese
 git config --global --add user.email rdeese@hmc.edu
 
+## TMUX ##
 # add tmux configuration
 ln -s -i ~/dotfiles/tmux/tmux.conf ~/.tmux.conf
+# install tmux plugin manager
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
+## MUTT ## (defunct)
 # add mutt configuration
 ln -s -i ~/dotfiles/mutt/muttrc ~/.muttrc
 ln -s -i ~/dotfiles/mutt/mailcap ~/.mailcap
 
+## PYTHON ##
 # add default python linter configurations
 ln -s -i ~/dotfiles/python/flake8 ~/.flake8
 ln -s -i ~/dotfiles/python/pylintrc ~/.pylintrc
 
-# add to .bash_profile
-cat >> ~/.bash_profile <<EOF
+## ZSH ##
+# add to .zsh
+cat >> ~/.zshenv <<EOF
   
 # load configuration from dotfiles.
 # for best results, place all other modifications above this line.
-source ~/dotfiles/bash_profile
+source ~/dotfiles/zsh/zshenv
 EOF
-source ~/.bash_profile
+
+# add to .zshrc
+cat >> ~/.zshrc <<EOF
+  
+# load configuration from dotfiles.
+# for best results, place all other modifications above this line.
+source ~/dotfiles/zsh/zshrc
+EOF
+
+source ~/.zshenv
+source ~/.zshrc
 
 echo "Complete. Rerunning this script is mostly harmless--"\
      "it will add a duplicate line to your .bash_profile."

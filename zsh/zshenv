@@ -1,0 +1,6 @@
+# /usr/local/bin needs to come before /usr/bin for homebrew
+# does it?
+# export PATH=/usr/local/bin:$PATH
+
+export DAGSTER_HOME=~/dagster_home
+export HOMEBREW_BUNDLE_FILE=~/dotfiles/homebrew/brewfile

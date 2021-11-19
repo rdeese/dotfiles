@@ -1,0 +1,25 @@
+tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/core"
+brew "fzf"
+brew "htop"
+brew "lazydocker"
+brew "mas"
+brew "pyenv"
+brew "the_silver_searcher"
+brew "tmux"
+brew "vim"
+cask "docker"
+cask "google-chrome"
+cask "iterm2"
+cask "selfcontrol"
+cask "slack"
+cask "spectacle"
+cask "transmission"
+cask "tunnelblick"
+cask "vlc"
+mas "1Password 7", id: 1333542190
+mas "Amphetamine", id: 937984704
+mas "NordVPN IKE", id: 1116599239
+mas "Transporter", id: 1450874784
+mas "Xcode", id: 497799835
