@@ -21,6 +21,9 @@ if command -v npm >/dev/null; then
   export PATH=$(npm bin):$PATH
 fi
 
+# export dagster home var
+export DAGSTER_HOME=~/dagster_home
+
 # aliases
 alias mp-tmux='tmux new-s -dA -s anything -c ~\; new-s -dA -s 3TB -c /Volumes/3TB\; new-s -dA -s 4TB -c /Volumes/4TB\; attach-session -t anything'
 alias civis-tmux='tmux new-s -dA -s anything -c ~\; new-s -dA -s platform -c ~/Documents/console\; new-s -dA -s metawork -c ~/Documents/work-notes\; attach-session -t anything'
