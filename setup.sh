@@ -1,5 +1,6 @@
 #!/bin/bash
 
+oo
 # PREREQUISITES
 # - this repo must be cloned into ~/dotfiles
 # - all preexisting dotfiles you wish to preserve must be moved out of
