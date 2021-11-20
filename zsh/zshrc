@@ -24,12 +24,12 @@ __git_branch_and_status () {
   # Get the status of the repo and color the branch name appropriately
   local STATUS=$(git status --long 2>&1)
   local BRANCH=$(git branch 2>/dev/null | grep '^*' | colrm 1 2)
-  local GREEN="\[\033[32m\]"
-  local RED="\[\033[31m\]"
-  local YELLOW="\[\033[33m\]"
+  local GREEN="%b%F{green}"
+  local RED="%b%F{red}"
+  local YELLOW="%b%F{yellow}"
   if [[ "$STATUS" != *'not a git repository'* ]]
   then
-    PS1+=":$DEFAULT"
+    PS1+="$DEFAULT:"
     if [[ "$STATUS" != *'working tree clean'* ]]
     then
       if [[ "$STATUS" == *'Changes to be committed'* ]]
@@ -68,22 +68,22 @@ __prompt_command() {
   # returns the emoji clock closest to the current time
   # CLOCK=$(date +%I\ 60*%M+45-30/24%%2+2~C*+C8335+0PP|dc|iconv -f ucs-4)
   local LAST_COMMAND_SUCCESS=$[$? == 0]
-  local DEFAULT="\[\033[0m\]"
-  local JADE="\[\033[36m\]"
-  local LAVENDER="\[\033[95m\]"
+  local DEFAULT="%b%f"
+  local JADE="%F{36}"
+  local LAVENDER="%B%F{magenta}"
   # $? gives exit code of last command
   # \! gives history # of this command
-  PS1="$LAVENDER\W"
+  PS1="$LAVENDER%1d"
   __git_branch_and_status
   if [ $LAST_COMMAND_SUCCESS = 1 ]; then
-    PS1+="\[\033[32m\]"
+    PS1+="%b%F{green}"
   else
-    PS1+="\[\033[31m\]"
+    PS1+="%b%F{red}"
   fi
   PS1+=" λ.$DEFAULT "
 }
 
-PROMPT_COMMAND=__prompt_command
+precmd() { __prompt_command; }
 
 __pretty_line() {
   local OFFSET=$(bc <<< "16 + ($RANDOM % 36 + 1)*6")
