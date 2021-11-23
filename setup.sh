@@ -39,7 +39,7 @@ ln -s -i ~/dotfiles/python/pylintrc ~/.pylintrc
 ## ZSH ##
 # add to .zsh
 cat >> ~/.zshenv <<EOF
-  
+
 # load configuration from dotfiles.
 # for best results, place all other modifications above this line.
 source ~/dotfiles/zsh/zshenv
@@ -47,13 +47,22 @@ EOF
 
 # add to .zshrc
 cat >> ~/.zshrc <<EOF
-  
+
 # load configuration from dotfiles.
 # for best results, place all other modifications above this line.
 source ~/dotfiles/zsh/zshrc
 EOF
 
+# add to .zshrc
+cat >> ~/.zprofile <<EOF
+
+# load configuration from dotfiles.
+# for best results, place all other modifications above this line.
+source ~/dotfiles/zsh/zprofile
+EOF
+
 source ~/.zshenv
+source ~/.zprofile
 source ~/.zshrc
 
 echo "Complete. Rerunning this script is mostly harmless--"\
