@@ -1,5 +1,9 @@
 export DAGSTER_HOME=~/dagster_home
 export HOMEBREW_BUNDLE_FILE=~/dotfiles/homebrew/brewfile
+export DOCKER_DEFAULT_PLATFORM=linux/amd64
+# TODO: remove once node 17 issues are resolved
+# https://github.com/webpack/webpack/issues/14532
+export NODE_OPTIONS=--openssl-legacy-provider
 
 # pyenv
 eval "$(pyenv init --path)"

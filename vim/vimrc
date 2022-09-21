@@ -5,6 +5,7 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'owickstrom/vim-colors-paramount'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
+Plug 'tpope/vim-eunuch'
 Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'maxmellon/vim-jsx-pretty'
@@ -17,6 +18,7 @@ Plug 'w0rp/ale'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'Konfekt/FastFold'
 Plug 'sheerun/vim-polyglot'
+Plug 'diepm/vim-rest-console'
 call plug#end()
 
 runtime macros/matchit.vim
@@ -238,10 +240,19 @@ let g:ale_linters = {
 \  'javascript': ['eslint'],
 \  'python': ['flake8'],
 \}
+
+function! ShandySqlFmtFixer(buffer) abort
+    return {
+    \   'command': 'sqlfmt -'
+    \}
+endfunction
+
+execute ale#fix#registry#Add('shandy-sqlfmt', 'ShandySqlFmtFixer', ['sql'], 'sqlfmt fixer in place of standard')
+
 let g:ale_fixers = {
-\  'javascript': ['prettier'],
+\  'javascript': ['eslint', 'prettier'],
 \  'python': ['black'],
-\  'sql': ['pgformatter'],
+\  'sql': ['shandy-sqlfmt'],
 \}
 let g:ale_javascript_eslint_suppress_eslintignore = 1
 if filereadable('./.eslintrc-personal.js')
@@ -263,3 +274,34 @@ autocmd filetype crontab setlocal nobackup nowritebackup
 
 " specify gitlab url for fugitive-gitlab
 let g:fugitive_gitlab_domains = ['https://gitlab.teamhologram.ninja']
+
+" function for saving files to a scratchpad
+function! SaveAsScratchFile(filename) range
+    let l:filename = a:filename
+    if len(l:filename) == 0
+      let l:filename = 'scratch'
+    endif
+
+    let l:extension = '.' . fnamemodify( l:filename, ':e' )
+    if len(l:extension) == 1
+        let l:extension = '.txt'
+    endif
+
+    let l:scratchdir = '~/Documents/vim-scratch/'
+
+    let l:filename = l:scratchdir . strftime("%Y-%m-%d_%H%M_") . escape( fnamemodify(l:filename, ':r') . l:extension, ' ')
+
+    execute "write " . l:filename
+endfunction
+
+" map scratchpad function to :SS
+command! -nargs=? SS call SaveAsScratchFile( <q-args> )
+
+" mappings to open and save a new buffer
+command! -nargs=? NS new | call SaveAsScratchFile( <q-args> )
+command! -nargs=? VS vnew | call SaveAsScratchFile( <q-args> )
+
+" command to browse scratch files
+command! -nargs=0 EOS edit ~/Documents/vim-scratch
+command! -nargs=0 NOS sp ~/Documents/vim-scratch
+command! -nargs=0 VOS vs ~/Documents/vim-scratch

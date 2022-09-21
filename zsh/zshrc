@@ -9,6 +9,11 @@ autoload -Uz compinit && compinit
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
+# force emacs bindings at prompt
+bindkey -e
+
+# load ssh-agent so git doesn't ask for passphrase
+plugins=(git ssh-agent)
 
 # zsh command correction suggestions
 setopt CORRECT
@@ -20,6 +25,9 @@ eval "$(pyenv init -)"
 
 # aliases
 alias tmns='tmux new-s -d -s'
+
+# start rbenv
+eval "$(rbenv init - zsh)"
 
 
 # pretty PS1

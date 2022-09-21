@@ -1,3 +1,2 @@
-# /usr/local/bin needs to come before /usr/bin for homebrew
-# does it?
-# export PATH=/usr/local/bin:$PATH
+# for executables installed by pipx
+export PATH=/Users/rupertdeese/.local/bin:$PATH
