@@ -305,3 +305,5 @@ command! -nargs=? VS vnew | call SaveAsScratchFile( <q-args> )
 command! -nargs=0 EOS edit ~/Documents/vim-scratch
 command! -nargs=0 NOS sp ~/Documents/vim-scratch
 command! -nargs=0 VOS vs ~/Documents/vim-scratch
+
+command! Finder silent exe '!open -R ' . expand("%:p")

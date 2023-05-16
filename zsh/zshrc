@@ -19,6 +19,14 @@ plugins=(git ssh-agent)
 setopt CORRECT
 setopt CORRECT_ALL
 
+# history config
+setopt inc_append_history
+setopt hist_ignore_dups
+alias history="history 1"
+HISTSIZE=99999  
+HISTFILESIZE=99999 
+SAVEHIST=$HISTSIZE
+
 # pyenv
 eval "$(pyenv init -)"
 
