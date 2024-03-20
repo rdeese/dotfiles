@@ -28,11 +28,17 @@ HISTFILESIZE=99999
 SAVEHIST=$HISTSIZE
 
 # pyenv
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
+echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
 eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 
 
 # aliases
 alias tmns='tmux new-s -d -s'
+
+# print the hostname of the currently connected router.
+alias router="arp -a | grep $(route -n get default | awk '/gateway/{print $2}') | awk '{print $1}' | head -n 1"
 
 # start rbenv
 eval "$(rbenv init - zsh)"

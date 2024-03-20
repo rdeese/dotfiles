@@ -1,8 +1,6 @@
-call plug#begin('~/.vim/plugged')
+call plug#begin()
 Plug 'ElmCast/elm-vim'
-Plug 'kchmck/vim-coffee-script'
 Plug 'altercation/vim-colors-solarized'
-Plug 'owickstrom/vim-colors-paramount'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-eunuch'
@@ -22,10 +20,10 @@ Plug 'diepm/vim-rest-console'
 Plug 'joshuavial/aider.nvim'
 call plug#end()
 
-runtime macros/matchit.vim
+" Turn off mouse
+set mouse=
 
 " use two spaces for indents, and make them actual spaces
-set backspace=2 " '2' doesn't mean 2 spaces; see :help 'backspace' for details
 set shiftwidth=2
 set tabstop=2
 set autoindent
@@ -39,6 +37,7 @@ colorscheme solarized
 set nobackup
 filetype indent on
 filetype plugin on
+set noincsearch
 
 " try out syntax folding by default
 let php_folding=2
@@ -354,4 +353,14 @@ endfunction
 command! SGPTPrompt call SGPTPrompt()
 command! SGPTBuffer call SGPTBuffer()
 command! -range SGPTVisual :call SGPTVisual(<line1>, <line2>)
-" vnoremap <silent> SGPTVisual :<C-u>call SGPTVisual()<CR>
+
+lua << EOF
+require('aider').setup({
+  auto_manage_context = false,
+  default_bindings = false
+})
+EOF
+
+lua << EOF
+vim.api.nvim_set_keymap('n', '<leader>oa', '<cmd>lua AiderOpen("--model gpt-4-turbo-preview --no-auto-commits")<cr>', {noremap = true, silent = true})
+EOF

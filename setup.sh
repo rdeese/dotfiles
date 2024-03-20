@@ -12,6 +12,9 @@ echo "Setting up dotfiles..."
 ln -s -i ~/dotfiles/vim ~/.vim
 ln -s -i ~/.vim/vimrc ~/.vimrc
 
+## NVIM
+ln -s -i ~/dotfiles/nvim ~/.config/nvim
+
 ## GIT ##
 # add git configuration
 ln -s -i ~/dotfiles/git ~/.git

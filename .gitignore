@@ -1,4 +1,6 @@
 .netrwhist
 
 vim/plugged/
+nvim/plugged/
+!nvim/plugged/README.md
 !vim/plugged/README.md
