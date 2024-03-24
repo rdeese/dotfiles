@@ -8,7 +8,6 @@ Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-eunuch'
 Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'pangloss/vim-javascript'
-Plug 'maxmellon/vim-jsx-pretty'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'wesQ3/vim-windowswap'
@@ -20,6 +19,8 @@ Plug 'Konfekt/FastFold'
 Plug 'sheerun/vim-polyglot'
 Plug 'diepm/vim-rest-console'
 Plug 'joshuavial/aider.nvim'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
 call plug#end()
 
 runtime macros/matchit.vim
@@ -259,9 +260,6 @@ let g:ale_javascript_eslint_suppress_eslintignore = 1
 if filereadable('./.eslintrc-personal.js')
   let g:ale_javascript_eslint_options = '-c .eslintrc-personal.js'
 endif
-
-" enable jsx highlighting in .js files
-let g:jsx_ext_required = 0
 
 " cursorline in active window
 augroup CursorLine

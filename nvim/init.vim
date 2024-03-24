@@ -18,6 +18,8 @@ Plug 'Konfekt/FastFold'
 Plug 'sheerun/vim-polyglot'
 Plug 'diepm/vim-rest-console'
 Plug 'joshuavial/aider.nvim'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
 call plug#end()
 
 " Turn off mouse
