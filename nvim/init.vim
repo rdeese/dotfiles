@@ -354,13 +354,13 @@ command! SGPTPrompt call SGPTPrompt()
 command! SGPTBuffer call SGPTBuffer()
 command! -range SGPTVisual :call SGPTVisual(<line1>, <line2>)
 
+tnoremap <Esc> <C-\><C-n>
+
 lua << EOF
 require('aider').setup({
   auto_manage_context = false,
   default_bindings = false
 })
+vim.api.nvim_set_keymap('n', '<leader>oa', '<cmd>lua AiderOpen("--sonnet --no-auto-commits")<cr>', {noremap = true, silent = true})
 EOF
 
-lua << EOF
-vim.api.nvim_set_keymap('n', '<leader>oa', '<cmd>lua AiderOpen("--model gpt-4-turbo-preview --no-auto-commits")<cr>', {noremap = true, silent = true})
-EOF
