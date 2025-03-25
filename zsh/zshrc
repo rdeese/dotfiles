@@ -27,13 +27,6 @@ HISTSIZE=99999
 HISTFILESIZE=99999 
 SAVEHIST=$HISTSIZE
 
-# pyenv
-echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
-echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-
-
 # aliases
 alias tmns='tmux new-s -d -s'
 

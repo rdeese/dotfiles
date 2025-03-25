@@ -6,8 +6,9 @@ export DOCKER_DEFAULT_PLATFORM=linux/amd64
 # export NODE_OPTIONS=--openssl-legacy-provider
 export ANDROID_HOME=/Users/rupertdeese/Library/Android/sdk
 
-# for homebrew
-export PATH=/opt/homebrew/bin/:$PATH
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# pyenv
-eval "$(pyenv init --path)"
+# for homebrew
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:/opt/homebrew/opt/mysql-client/bin:$PATH"

@@ -1,2 +1,0 @@
-# for executables installed by pipx
-export PATH=/Users/rupertdeese/.local/bin:$PATH

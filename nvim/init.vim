@@ -358,9 +358,9 @@ tnoremap <Esc> <C-\><C-n>
 
 lua << EOF
 require('aider').setup({
-  auto_manage_context = false,
-  default_bindings = false
+  auto_manage_context = true,
+  default_bindings = false,
+  vim.api.nvim_set_keymap('n', '<leader>oa', ':AiderOpen --sonnet --no-auto-commits --no-gitignore<CR>', {noremap = true, silent = true})
 })
-vim.api.nvim_set_keymap('n', '<leader>oa', '<cmd>lua AiderOpen("--sonnet --no-auto-commits")<cr>', {noremap = true, silent = true})
 EOF
 
