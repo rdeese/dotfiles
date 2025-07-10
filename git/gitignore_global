@@ -61,3 +61,11 @@ elm-stuff
 
 # aider #
 .aider*
+
+# cursor
+.cursor/
+CURSOR_AGENT.md
+.cursorrules
+
+# vscode
+*.code-workspace
