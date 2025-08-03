@@ -45,6 +45,9 @@ Thumbs.db
 ###################
 *.pyc
 
+# uv
+.venv
+
 # pytest #
 ##########
 .cache

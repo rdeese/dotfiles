@@ -21,7 +21,7 @@ ln -s -i ~/dotfiles/git ~/.git
 git config --global core.excludesfile ~/.git/gitignore_global
 git config --global --add include.path ~/.git/gitconfig
 git config --global --add user.name rdeese
-git config --global --add user.email rdeese@hmc.edu
+git config --global --add user.email github@rh.deese.org
 
 ## TMUX ##
 # add tmux configuration
@@ -31,8 +31,8 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 ## MUTT ## (defunct)
 # add mutt configuration
-ln -s -i ~/dotfiles/mutt/muttrc ~/.muttrc
-ln -s -i ~/dotfiles/mutt/mailcap ~/.mailcap
+# ln -s -i ~/dotfiles/mutt/muttrc ~/.muttrc
+# ln -s -i ~/dotfiles/mutt/mailcap ~/.mailcap
 
 ## PYTHON ##
 # add default python linter configurations

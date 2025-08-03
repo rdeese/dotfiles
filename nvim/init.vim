@@ -32,7 +32,6 @@ set expandtab
 set number
 syntax enable
 set background=light
-" colorscheme paramount
 colorscheme solarized
 set nobackup
 filetype indent on

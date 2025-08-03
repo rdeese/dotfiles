@@ -34,7 +34,7 @@ alias tmns='tmux new-s -d -s'
 alias router="arp -a | grep $(route -n get default | awk '/gateway/{print $2}') | awk '{print $1}' | head -n 1"
 
 # start rbenv
-eval "$(rbenv init - zsh)"
+# eval "$(rbenv init - zsh)"
 
 
 # pretty PS1
